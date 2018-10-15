@@ -6,5 +6,8 @@ package com.josie.service;
  * @Date：Create in 17:33 2018/9/29
  */
 public interface UserService {
-    public void getUserName();
+
+    public double  getUserName(int s);
+
+    public double  div(int s,int v );
 }

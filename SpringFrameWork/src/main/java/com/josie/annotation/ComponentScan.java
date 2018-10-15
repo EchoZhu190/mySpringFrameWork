@@ -11,9 +11,13 @@ import java.lang.annotation.*;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ComponentScan {
-
+    /**
+     * 单个包及子包
+     */
+    String basePackage() default "";
     /**
      * @return
+     *
      */
     String[] value() default {};
 

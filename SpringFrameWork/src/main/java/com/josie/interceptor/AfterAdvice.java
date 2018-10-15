@@ -1,19 +1,28 @@
 package com.josie.interceptor;
 
-import com.josie.config.MyAdvice;
+import com.josie.config.MyAspect;
 import net.sf.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.Method;
 
+
 public class AfterAdvice extends Interceptor {
 	@Override
 	public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-		methodProxy.invoke(o,objects);
-		excuteAfterMethod();
-		return null;
+		Object obj=null;
+		try{
+			obj= methodProxy.invoke(o,objects);
+		}catch (Exception e){
+			System.out.println("异常情况");
+		}
+		finally {
+			excuteAfterMethod();
+		}
+
+		return obj;
 	}
 	public void excuteAfterMethod(){
-		MyAdvice myAdvice = new MyAdvice();
+		MyAspect myAdvice = new MyAspect();
 		myAdvice.getAfter();
 	}
 }
